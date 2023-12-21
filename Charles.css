@@ -1,0 +1,428 @@
+/* Import the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Define CSS variables */
+:root {
+    --first-color: #2e2e41;
+    --second-color: #5b85ff;
+    --third-color: #434354;
+    --text-color: #fff;
+    --box-shadow: 0 5px 25px rgba(2, 2, 2, 0.1);
+    --text-shadow: 0 5px 25px rgba(2, 2, 2, 0.1);
+}
+
+/* Global CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Use the Poppins font for all elements */
+}
+
+/* Body styles */
+body {
+    background: var(--first-color); /* Set the background color */
+}
+
+/* Styles for section */
+section {
+    position: relative;
+    margin: 0 80px;
+    transition: 0.5s ease;
+}
+
+/* Styles for main container */
+.main-container {
+    position: relative;
+}
+
+/* Styles for tab navigation bar */
+.tab-nav-bar {
+    position: relative;
+    margin: 150px 10px 40px 10px;
+}
+
+/* Styles for tab navigation */
+.tab-navigation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+/* Styles for tab menu */
+.tab-menu {
+    color: var(--text-color);
+    list-style: none;
+    background: var(--third-color);
+    max-width: 800px;
+    padding: 10px;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--third-color);
+    border-radius: 50px;
+    box-shadow: var(--box-shadow);
+    overflow-x: auto;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+.tab-menu.dragging{
+	scroll-behavior: unset;
+    cursor: grab;
+}
+
+/* Hide scrollbar for tab menu */
+.tab-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Styles for tab buttons */
+.tab-btn {
+    color: var(--text-color);
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 2px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s ease;
+}
+
+.tab-btn.dragging .tab-btn{
+    pointer-events: none;
+}
+
+/* Hover styles for tab buttons */
+.tab-btn:hover {
+    background: var(--first-color);
+}
+
+/* Active tab button styles */
+.tab-btn.active {
+    background: var(--second-color);
+}
+
+/* Styles for left and right buttons */
+.left-btn,
+.right-btn {
+    position: absolute;
+    color: var(--text-color);
+    font-size: 1.8em;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.left-btn {
+    left: 0;
+    background: linear-gradient(to left, transparent, var(--first-color) 80%);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: none;
+}
+
+.right-btn {
+    right: 0;
+    background: linear-gradient(to right, transparent, var(--first-color) 80%);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.tab-content{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.tab{
+    position: absolute;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: auto;
+    max-width: 1100px;
+    padding: 15px 50px;
+    transform: translateX(25px);
+    content-visibility: hidden;
+    opacity: 0;
+}
+
+.tab.active{
+    transform: translateX(0);
+    content-visibility: visible;
+     opacity: 1;
+     transition: 1s ease;
+}
+
+.tab .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    gap: 30px;
+}
+
+.tab .img-card{
+    position: relative;
+    width: 450px;
+    max-width: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+}
+
+.tab .img-card img{
+    width: 100%;
+}
+
+.right-column{
+    max-width: 800px;
+}
+
+.info .city, .info .description p{
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.info .city{
+    font-size: 2em;
+}
+
+.country{
+    color: var(--third-color);
+    font-size: 5em;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: var(--box-shadow);
+}
+
+.navigation-items ul{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.navigation-items a{
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navigation-items li{
+    float: left;
+}
+
+header {
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 200px;
+    transition: 0.5s ease;
+}
+
+header .brand {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+header .navigation {
+    position: relative;
+}
+
+header .navigation .navigation-items a {
+    position: relative;
+    color: #0A0B0C;
+    font-size: 1.2em;
+    margin: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.3s ease;
+}
+
+header .navigation .navigation-items a:before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 0%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+header .navigation .navigation-items a:hover:before {
+    width: 100%;
+}
+
+section {
+    padding: 100px 200px;
+}
+
+.home .content {
+    z-index: 888;
+    color: #fff;
+    width: 70%;
+    margin: 50px;
+    display: none;
+}
+
+.home .content.active {
+    display: block;
+}
+
+.home .content h1 {
+    font-size: 4em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 75px;
+    margin-bottom: 40px;
+}
+
+.home .content h1 span {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.home .content p {
+    margin-bottom: 65px;
+}
+
+.home .content a {
+    background: #fff;
+    padding: 20px 40px;
+    color: #1680AC;
+    font-size: 2em;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.home .content {
+    z-index: 888;
+    color: #fff;
+    width: 70%;
+    margin: 50px;
+    display: none;
+}
+
+.home .content.active {
+    display: block;
+}
+
+.home .content h1 {
+    font-size: 4em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 75px;
+    margin-bottom: 40px;
+}
+
+.home .content h1 span {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.home .content p {
+    margin-bottom: 65px;
+}
+
+.home .content a {
+    background: #fff;
+    padding: 20px 40px;
+    color: #1680AC;
+    font-size: 2em;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.contact-box {
+    display: flex;
+    background: transparent;
+}
+
+.contact-left {
+    flex: 1;
+    padding: 40px 60px;
+}
+
+.contact-right {
+    flex: 1;
+    padding: 40px;
+    background: #1c00b5;
+    color: #fff;
+}
+
+.contact-right h1 {
+    margin-bottom: 10px;
+}
+
+.contact-right .container p {
+    margin-bottom: 40px;
+}
+
+.input-row {
+    display: align;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+textarea{
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+label{
+    margin-bottom: 6px;
+    display: block;
+}
+button{
+    background: #1c00b5;
+    width: 100px;
+    border: none;
+    outline: none;
+    color: #fff;
+    height: 35px;
+    border-radius: 30px;
+    margin-top: 20px;
+    box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
+}
+
+.contact-left h3{
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.contact-right h3{
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+tr rd:first-child{
+    padding-right: 20px;
+}
+
+tr rd{
+    padding-top: 20px;
+}

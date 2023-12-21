@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SakuraVoyages</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+
+<body>
+
+<header>
+    <a href="#" class="brand">Explore</a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+        <div class="navigation-items">
+            <ul>
+            <li><a href="Algie.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="home">
+    <div class="content active">
+        <h1>Gallery<br><span></span></h1>
+        <p>Put some text here</p>
+    </div>
+    <div class="full-img" id="fullimgbox">
+        <img src="Gallery1.jpg" id="fullimg">
+        <span onclick="closefullimg()">X</span>
+    </div>
+    <div class="img-gallery">
+        <img src="Gallery.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery1.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery2.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery3.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery4.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery5.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery6.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery7.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery8.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery9.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery10.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery11.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery12.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery13.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery14.jpg" onclick="openfullimg(this.src)">
+        <img src="Gallery15.jpg" onclick="openfullimg(this.src)">
+    </div>
+
+ <script type="text/javascript">
+    // JavaScript for responsive navigation menu
+    const menuBtn = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".navigation");
+
+    menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        navigation.classList.toggle("active");
+    });
+
+    // JavaScript for video slider navigation
+    const btns = document.querySelectorAll(".nav-btn");
+    const slides = document.querySelectorAll(".video-slide");
+    const contents = document.querySelectorAll(".content");
+
+    var sliderNav = function(manual) {
+        btns.forEach((btn) => {
+            btn.classList.remove("active");
+        });
+
+        slides.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+
+        contents.forEach((content) => {
+            content.classList.remove("active");
+        });
+
+        btns[manual].classList.add("active");
+        slides[manual].classList.add("active");
+        contents[manual].classList.add("active");
+    }
+
+    btns.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            sliderNav(i);
+        })
+    });
+
+    var fullimgbox = document.getElementById("fullimgbox");
+    var fullimg = document.getElementById("fullimg");
+
+    function openfullimg(pic){
+        fullimgbox.style.display = "flex";
+        fullimg.src = pic;
+    }
+
+    function closefullimg(){
+        fullimgbox.style.display = "none";
+    }
+</script>
+</body>
+
+</html>
